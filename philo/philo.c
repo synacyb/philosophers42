@@ -7,6 +7,7 @@ void    print_msg(char  *str)
     while(str[i])
         write(1, &str[i++], 1);
 }
+
 int main(int ac, char **av)
 {
     if(ac == 5)
