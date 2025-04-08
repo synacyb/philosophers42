@@ -6,13 +6,13 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:45 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/04/07 13:28:25 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:14:49 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
 	long	r;
 	int		signe;
@@ -30,6 +30,11 @@ int	ft_atoi(const char *nptr)
 	while (*nptr != '\0' && (*nptr >= '0' && *nptr <= '9'))
 	{
 		r = r * 10 + (*nptr - 48);
+		if ((r * signe) > 2147483647 || (r * signe) < -2147483648)
+		{
+			r = 2147483649;
+			return (r);
+		}
 		nptr++;
 	}
 	r = r * signe;

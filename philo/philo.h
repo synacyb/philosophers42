@@ -3,7 +3,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <pthread.h>
-
+#define invalid 0
+#define valid 1
 //data struct !!
 
 typedef struct data
@@ -31,7 +32,7 @@ typedef struct philo
 }t_philo;
 //all prototypes !
 
-int	ft_atoi(const char *nptr);
+long	ft_atoi(const char *nptr);
 void    set_enum(t_enum *data);
 
 #endif
