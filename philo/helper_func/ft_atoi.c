@@ -6,11 +6,11 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:30:45 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/04/08 12:14:49 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:01:20 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../philo.h"
 
 long	ft_atoi(const char *nptr)
 {

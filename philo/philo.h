@@ -2,6 +2,7 @@
 #define PHILO_H
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <pthread.h>
 #define invalid 0
 #define valid 1
@@ -28,11 +29,14 @@ typedef struct enums
 // data of philo
 typedef struct philo
 {
-    int n_philo;
+    int id;
+    pthread_t   thread;
+
 }t_philo;
 //all prototypes !
 
 long	ft_atoi(const char *nptr);
 void    set_enum(t_enum *data);
-
+int     check_args(char **args);
+void    set_data(t_data *data, char **args, int ac);
 #endif

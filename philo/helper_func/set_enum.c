@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "../philo.h"
 
 void    set_enum(t_enum *data)
 {
