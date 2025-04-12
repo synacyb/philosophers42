@@ -11,4 +11,6 @@ void    set_data(t_data *data, char **args, int ac)
     data->t_to_sleep = ft_atoi(args[4]);
     if(ac == 6)
         data->n_t_must_eat = ft_atoi(args[5]);
+    else
+        data->n_t_must_eat = -1;
 }
