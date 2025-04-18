@@ -17,6 +17,7 @@ typedef enum e_state
     STATE_EATING,
     STATE_DEAD
 }   t_state;
+
 typedef struct philo t_philo;
 typedef struct data
 {
@@ -53,5 +54,5 @@ int    set_data(t_data *data, char **args, int ac);
 long long get_time(void);
 void    init_philos(t_data *data);
 void    create_threads(t_data *data);
-void    ft_clean(t_data *data);
+int    ft_clean(t_data *data);
 #endif

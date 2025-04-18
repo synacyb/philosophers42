@@ -1,18 +1,28 @@
 #include "philo.h"
 
-
-// void    eating(t_philo  *data)
-// {
-
-// }
-
-void    *life_cycel(void *arg)
+void *life_cycel(void *arg)
 {
-    t_philo *philo;
-    philo = (t_philo *)arg;
+    t_philo *philo = (t_philo *)arg;
 
-    printf("philo id = %d\n", philo->id);
-    return (NULL);
+    if (philo->data->n_philo == 1)
+    {
+        printf("%d %d %s\n", 0, 1, "has taken a fork");
+        if(usleep(philo->data->t_to_die * 1000) == -1)
+            printf("usleep has filie !!");
+        else
+            printf("%d %d %s\n", philo->data->t_to_die, 1, "died");
+        return NULL;
+    }
+
+    while (!philo->data->is_dead)
+    {
+        // take_forks(philo);
+        // eat(philo);
+        // sleep_philo(philo);
+        // think(philo);
+    }
+
+    return NULL;
 }
 
 void    create_threads(t_data *data)
@@ -24,8 +34,6 @@ void    create_threads(t_data *data)
         pthread_create(&data->philos[i].thread, NULL, &life_cycel, &data->philos[i]);
         i++;
     }
-    
-
     i = 0;
 
     while (i < data->n_philo)

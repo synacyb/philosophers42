@@ -1,36 +1,6 @@
 
 #include "philo.h"
 
-void    *ft_sss(void *argv)
-{
-    return(argv);
-}
-
-int one_philo_exist(t_data *data)
-{  
-    pthread_t   thread;
-
-    
-    if(data->n_philo == 1)
-    {
-        printf("%d %d %s\n", 0, 1, "has taken a fork");
-        if(usleep(data->t_to_die * 1000) == -1)
-        {
-            pthread_create(&thread, NULL, ft_sss, NULL);
-            pthread_join(thread, NULL);
-            printf("usleep has filie !!");
-                return (1);
-        }
-        else
-            printf("%d %d %s\n", data->t_to_die, 1, "died");
-    }
-    return 0;
-}
-
-
-
-
-
 int main(int ac, char **av)
 {
     if(ac == 5 || ac == 6)
@@ -46,13 +16,6 @@ int main(int ac, char **av)
         init_philos(&data);
         create_threads(&data);
         ft_clean(&data);
-        // if(ac == 5)
-        //     if(one_philo_exist(&data) == 1)
-        //         return 1;
-        //     if(data.n_philo > 1)
-        //     {
-                
-        //     }
     }
     else
     {

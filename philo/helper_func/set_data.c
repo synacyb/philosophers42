@@ -36,7 +36,7 @@ int    set_data(t_data *data, char **args, int ac)
     return (EXIT_SUCCESS);
 }
 
-void    ft_clean(t_data *data)
+int    ft_clean(t_data *data)
 {
     free(data->forks);
     free(data->philos);
