@@ -55,4 +55,9 @@ long long get_time(void);
 void    init_philos(t_data *data);
 void    create_threads(t_data *data);
 int    ft_clean(t_data *data);
+void    take_forks(t_philo *philo);
+void    etaing(t_philo  *philo);
+void    sleeping(t_philo *philo);
+void    thinking(t_philo *philo);
+
 #endif

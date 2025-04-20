@@ -3,7 +3,8 @@
 void *life_cycel(void *arg)
 {
     t_philo *philo = (t_philo *)arg;
-
+    if(philo->data->n_philo > 1)
+        usleep(500);
     if (philo->data->n_philo == 1)
     {
         printf("%d %d %s\n", 0, 1, "has taken a fork");
@@ -13,13 +14,13 @@ void *life_cycel(void *arg)
             printf("%d %d %s\n", philo->data->t_to_die, 1, "died");
         return NULL;
     }
-
-    while (!philo->data->is_dead)
+    
+    while (1)
     {
-        // take_forks(philo);
-        // eat(philo);
-        // sleep_philo(philo);
-        // think(philo);
+        take_forks(philo);
+        etaing(philo);
+        sleeping(philo);
+        thinking(philo);
     }
 
     return NULL;
