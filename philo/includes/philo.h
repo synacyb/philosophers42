@@ -12,9 +12,10 @@
 // state of philos !!
 typedef enum e_state
 {
-    STATE_THINKING,
-    STATE_SLEEPING,
+    STATE_TAKE_FORK,
     STATE_EATING,
+    STATE_SLEEPING,
+    STATE_THINKING,
     STATE_DEAD
 }   t_state;
 
@@ -29,9 +30,11 @@ typedef struct data
     int t_to_sleep;
     int n_t_must_eat;
     time_t       start_time;
-    int             is_dead;
+    int             stop;
     pthread_mutex_t *forks;
     pthread_mutex_t print_mutex;
+    pthread_mutex_t meal_mutex;
+    pthread_mutex_t stop_mutex;
     t_state *state_data;
 }   t_data;
 
@@ -51,13 +54,17 @@ typedef struct philo
 long	ft_atoi(const char *nptr);
 int     check_args(char **args);
 int    set_data(t_data *data, char **args, int ac);
-long long get_time(void);
+time_t get_time(void);
 void    init_philos(t_data *data);
 void    create_threads(t_data *data);
 int    ft_clean(t_data *data);
-void    take_forks(t_philo *philo);
+int    take_forks(t_philo *philo);
 void    etaing(t_philo  *philo);
 void    sleeping(t_philo *philo);
 void    thinking(t_philo *philo);
+void    ft_usleep(time_t time);
+void	*ft_watcher(void *arg);
+int ft_check_stop(t_data *data);
+void	ft_log(t_philo *philo, int status);
 
 #endif

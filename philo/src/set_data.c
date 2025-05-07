@@ -1,4 +1,4 @@
-#include "../philo.h"
+#include "philo.h"
 
 
 void    init_forks(t_data *data)
@@ -32,7 +32,9 @@ int    set_data(t_data *data, char **args, int ac)
     data->philos = malloc(sizeof(t_philo) * data->n_philo);
     if (!data->philos)
         return (EXIT_FAILURE);
-    data->start_time = get_time();
+    pthread_mutex_init(&data->print_mutex, NULL);
+    pthread_mutex_init(&data->meal_mutex, NULL);
+    pthread_mutex_init(&data->stop_mutex, NULL);
     return (EXIT_SUCCESS);
 }
 

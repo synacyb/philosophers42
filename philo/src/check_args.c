@@ -1,4 +1,4 @@
-#include "../philo.h"
+#include "philo.h"
 
 int	ft_valid_arguments(char *nptr)
 {
