@@ -6,16 +6,28 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:45:59 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/05/07 16:27:51 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/05/25 21:47:54 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// int	ft_check_meal(t_data *data)
-// {
+int	ft_check_meal(t_data *data)
+{
+	int i = 0;
+	int finished = 0;
 	
-// }
+	while (i < data->n_philo)
+	{
+		if (data->philos[i].meals_eaten == data->n_t_must_eat)
+			finished++;
+		i++;
+	}
+	// printf("%d", data->n_t_must_eat);
+	if (finished == data->n_philo)
+		return 1;
+	return 0;
+}
 
 int	ft_check_died(t_data *data)
 {
@@ -57,7 +69,9 @@ void	*ft_watcher(void *arg)
 		// TODO: Iterate over each philo and check the last meal time and died time
 		if (ft_check_died(data))
 			break;
-		
+		// if(data->n_t_must_eat != -1)
+		// 	if(ft_check_meal(data))
+		// 		break ;
 		
 		// TODO: Check the stop flag and break if ON
 		// TODO: Check the meal counter for each philo, if all of them has finishing eating then stop simulation
