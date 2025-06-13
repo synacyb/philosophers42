@@ -35,6 +35,7 @@ typedef struct data
     pthread_mutex_t print_mutex;
     pthread_mutex_t meal_mutex;
     pthread_mutex_t stop_mutex;
+    pthread_mutex_t check_eat_taget;
     t_state *state_data;
 }   t_data;
 

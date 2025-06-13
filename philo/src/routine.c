@@ -2,15 +2,27 @@
 
 int	take_forks(t_philo *philo)
 {
-	pthread_mutex_lock(philo->left_fork);
-	ft_log(philo, STATE_TAKE_FORK);
 	if (philo->data->n_philo < 2)
 	{
+		ft_log(philo, STATE_TAKE_FORK);
 		ft_usleep(philo->data->t_to_die);
 		return (0);
 	}
-	pthread_mutex_lock(philo->right_fork);
-	ft_log(philo, STATE_TAKE_FORK);
+
+	else if (philo->id % 2 == 0)
+	{
+		pthread_mutex_lock(philo->left_fork);
+		ft_log(philo, STATE_TAKE_FORK);
+		pthread_mutex_lock(philo->right_fork);
+		ft_log(philo, STATE_TAKE_FORK);
+	}
+	else
+	{
+		pthread_mutex_lock(philo->right_fork);
+		ft_log(philo, STATE_TAKE_FORK);
+		pthread_mutex_lock(philo->left_fork);
+		ft_log(philo, STATE_TAKE_FORK);
+	}
 	return (1);
 }
 
@@ -47,7 +59,3 @@ void    thinking(t_philo *philo)
 	ft_usleep(thinking_time);
 }
 
-// void    died(t_philo *philo)
-// {
-	
-// }

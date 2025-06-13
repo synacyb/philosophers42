@@ -35,6 +35,7 @@ int    set_data(t_data *data, char **args, int ac)
     pthread_mutex_init(&data->print_mutex, NULL);
     pthread_mutex_init(&data->meal_mutex, NULL);
     pthread_mutex_init(&data->stop_mutex, NULL);
+    // pthread_mutex_init(&data->check_eat_taget, NULL);
     return (EXIT_SUCCESS);
 }
 

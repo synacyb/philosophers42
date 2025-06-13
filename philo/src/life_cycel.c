@@ -4,17 +4,8 @@ void *life_cycel(void *arg)
 {
     t_philo *philo = (t_philo *)arg;
 
-    // if (philo->data->n_philo == 1)
-    // {
-    //     printf("%d %d %s\n", 0, 1, "has taken a fork");
-    //     if(usleep(philo->data->t_to_die * 1000) == -1)
-    //         printf("usleep has filie !!");
-    //     else
-    //         printf("%d %d %s\n", philo->data->t_to_die, 1, "died");
-    //     return NULL;
-    // }
-    if(philo->id % 2 == 0)
-        ft_usleep(1);
+    if(philo->id % 2 != 0)
+        ft_usleep(100);
     while (1)
     {
         if (ft_check_stop(philo->data))

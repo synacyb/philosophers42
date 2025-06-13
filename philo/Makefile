@@ -1,7 +1,6 @@
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-pthread  -g -fsanitize=thread
-# -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -pthread  #-g -fsanitize=thread
 INCLUDES = -I./includes
 SRC_DIR = ./src
 FUNC_DIR = ./functions
@@ -34,4 +33,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: clean
