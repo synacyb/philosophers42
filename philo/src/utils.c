@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 16:06:03 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/05/07 16:18:36 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/14 11:41:35 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	ft_log(t_philo *philo, int status)
 	if (ft_check_stop(philo->data))
 		return ;
 	pthread_mutex_lock(&philo->data->print_mutex);
+	if (ft_check_stop(philo->data))
+	{
+		pthread_mutex_unlock(&philo->data->print_mutex);
+		return ;
+	}
 	if (status == STATE_TAKE_FORK)
 		printf("%ld %d has a take fork\n", get_time() - philo->data->start_time, philo->id);
 	else if (status == STATE_EATING)

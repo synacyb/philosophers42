@@ -19,10 +19,14 @@ int    set_data(t_data *data, char **args, int ac)
     data->t_to_eat = ft_atoi(args[3]);
     data->t_to_sleep = ft_atoi(args[4]);
     if(ac == 6)
+    {
         data->n_t_must_eat = ft_atoi(args[5]);
+        if (data->n_t_must_eat == 0)
+            return (EXIT_FAILURE);
+    }
+        
     else
         data->n_t_must_eat = -1;
-
     // Allocate array forks
     data->forks = malloc(data->n_philo * sizeof(pthread_mutex_t));
     if (!data->forks)

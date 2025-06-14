@@ -33,9 +33,17 @@ void    etaing(t_philo  *philo)
 	philo->last_meal = get_time();
 	philo->meals_eaten++;
 	pthread_mutex_unlock(&philo->data->meal_mutex);
-	ft_usleep(philo->data->t_to_eat); // 1ms  1.3ms    
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
+	ft_usleep(philo->data->t_to_eat); 
+	if (philo->id % 2 == 0)
+	{
+		pthread_mutex_unlock(philo->left_fork);
+		pthread_mutex_unlock(philo->right_fork);
+	}
+	else
+	{
+		pthread_mutex_unlock(philo->right_fork);
+		pthread_mutex_unlock(philo->left_fork);
+	}
 }
 
 void    sleeping(t_philo *philo)
@@ -46,16 +54,5 @@ void    sleeping(t_philo *philo)
 
 void    thinking(t_philo *philo)
 {
-	int thinking_time;
-
-	thinking_time = (philo->data->t_to_die
-		- (get_time() - philo->last_meal)
-		- philo->data->t_to_eat) / 2;
-	if (thinking_time <= 0)
-		thinking_time = 0;
-	else if (thinking_time > 200)
-		thinking_time = 200;
 	ft_log(philo, STATE_THINKING);
-	ft_usleep(thinking_time);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:45:59 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/13 17:49:57 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/14 12:14:19 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@ int	ft_check_meal(t_data *data)
 	int i = 0;
 	int finished = 0;
 	
+	pthread_mutex_lock(&data->meal_mutex);
 	while (i < data->n_philo)
 	{
-		if (data->philos[i].meals_eaten == data->n_t_must_eat)
+		
+		if (data->philos[i].meals_eaten >= data->n_t_must_eat)
 			finished++;
 		i++;
 	}
+	pthread_mutex_unlock(&data->meal_mutex);
 	if (finished == data->n_philo)
 		return 1;
 	return 0;
@@ -36,11 +39,11 @@ int	ft_check_died(t_data *data)
 
 	i = 0;
 	stop = 0;
-	current_time = get_time();
-	pthread_mutex_lock(&data->meal_mutex);
 	while (i < data->n_philo)
 	{
-		if (current_time - data->philos[i].last_meal > data->t_to_die)
+		current_time = get_time();
+		pthread_mutex_lock(&data->meal_mutex);
+		if (current_time - data->philos[i].last_meal >= data->t_to_die)
 		{
 			stop = 1;
 			pthread_mutex_unlock(&data->meal_mutex);
@@ -50,9 +53,9 @@ int	ft_check_died(t_data *data)
 			pthread_mutex_unlock(&data->stop_mutex);
 			return (stop);
 		}
+		pthread_mutex_unlock(&data->meal_mutex);
 		i++;
 	}
-	pthread_mutex_unlock(&data->meal_mutex);
 	return (stop);
 }
 
@@ -65,21 +68,18 @@ void	*ft_watcher(void *arg)
 	while (1)
 	{
 		usleep(500);
-		// TODO: Iterate over each philo and check the last meal time and died time
 		if (ft_check_died(data))
 			break;
 		if(data->n_t_must_eat != -1)
 		{
 			if(ft_check_meal(data))
 			{
+				pthread_mutex_lock(&data->stop_mutex);
 				data->stop = 1;
+				pthread_mutex_unlock(&data->stop_mutex);
 				break ;
 			}			
 		}
-
-		
-		// TODO: Check the stop flag and break if ON
-		// TODO: Check the meal counter for each philo, if all of them has finishing eating then stop simulation
 	}
 	return (NULL);
 }
