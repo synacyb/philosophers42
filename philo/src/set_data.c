@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_data.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/15 10:08:51 by ayadouay          #+#    #+#             */
+/*   Updated: 2025/06/15 10:08:52 by ayadouay         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 
@@ -22,24 +34,21 @@ int    set_data(t_data *data, char **args, int ac)
     {
         data->n_t_must_eat = ft_atoi(args[5]);
         if (data->n_t_must_eat == 0)
-            return (EXIT_FAILURE);
+            return (printf("Error: n_t_must_eat must be greater than 0\n") ,EXIT_FAILURE);
     }
-        
     else
         data->n_t_must_eat = -1;
-    // Allocate array forks
     data->forks = malloc(data->n_philo * sizeof(pthread_mutex_t));
     if (!data->forks)
         return (EXIT_FAILURE);
     init_forks(data);
-    // Allocate array philos
     data->philos = malloc(sizeof(t_philo) * data->n_philo);
     if (!data->philos)
         return (EXIT_FAILURE);
     pthread_mutex_init(&data->print_mutex, NULL);
     pthread_mutex_init(&data->meal_mutex, NULL);
     pthread_mutex_init(&data->stop_mutex, NULL);
-    // pthread_mutex_init(&data->check_eat_taget, NULL);
+    data->stop = 0;
     return (EXIT_SUCCESS);
 }
 
