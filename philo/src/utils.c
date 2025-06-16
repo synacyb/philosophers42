@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 16:06:03 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/15 10:08:58 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:27:54 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int ft_check_stop(t_data *data)
     }
     pthread_mutex_unlock(&data->stop_mutex);
     return (stop);
-    
 }
 
 void	ft_log(t_philo *philo, int status)

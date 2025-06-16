@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:24 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/15 10:08:25 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/16 15:43:18 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void *life_cycel(void *arg)
 {
     t_philo *philo = (t_philo *)arg;
 
-    if(philo->id % 2 != 0)
-        usleep(100);
     while (1)
     {
         if (ft_check_stop(philo->data))
@@ -25,10 +23,11 @@ void *life_cycel(void *arg)
         if (take_forks(philo) == 0)
             break ;
         etaing(philo);
+        if (ft_check_stop(philo->data))
+            break ;
         sleeping(philo);
         thinking(philo);
     }
-
     return NULL;
 }
 

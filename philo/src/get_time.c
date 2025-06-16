@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:31 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/15 10:08:32 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/16 15:25:38 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,17 @@ time_t get_time(void)
     return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-void    ft_usleep(time_t time)
+void    ft_usleep(time_t time, t_data *data)
 {
     time_t	start;
 
 	start = get_time();
-	while ((get_time() - start) <= time)
+	while (!ft_check_stop(data) && (get_time() - start) <= time)
     {
-        usleep(500);
+        if (ft_check_stop(data))
+            break ;
+        usleep(50);
     }
 }
+
 
