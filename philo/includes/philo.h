@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:09:13 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/16 14:51:47 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/16 18:55:47 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct data
     pthread_mutex_t print_mutex;
     pthread_mutex_t meal_mutex;
     pthread_mutex_t stop_mutex;
-    // pthread_mutex_t check_eat_taget;
     t_state *state_data;
 }   t_data;
 
