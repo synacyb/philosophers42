@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:51 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/18 09:38:02 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/18 10:17:04 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,6 @@ int    set_data(t_data *data, char **args, int ac)
 int    ft_clean(t_data *data)
 {
     int i;
-
-    i = 0;
-    while (i < data->n_philo)
-    {
-        pthread_join(data->philos[i].thread, NULL);
-        i++;
-    }
 
     i = 0;
     while (i < data->n_philo)
