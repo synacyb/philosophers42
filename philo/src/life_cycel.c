@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:24 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/19 14:54:00 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/19 15:30:41 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 int	check_etaing(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->meal_mutex);
-	if(philo->meals_eaten < philo->data->n_t_must_eat)
+	if (philo->data->n_t_must_eat == -1
+		|| philo->meals_eaten < philo->data->n_t_must_eat)
 	{
 		pthread_mutex_unlock(&philo->data->meal_mutex);
-		return 1;
+		return (1);
 	}
 	pthread_mutex_unlock(&philo->data->meal_mutex);
-	return 0;
+	return (0);
 }
 
 void	*life_cycel(void *arg)
@@ -39,7 +40,7 @@ void	*life_cycel(void *arg)
 			break ;
 		if (ft_check_stop(philo->data))
 		{
-			pthread_mutex_unlock(philo->left_fork);	
+			pthread_mutex_unlock(philo->left_fork);
 			pthread_mutex_unlock(philo->right_fork);
 			break ;
 		}
