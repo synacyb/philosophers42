@@ -12,18 +12,18 @@
 
 #include "philo.h"
 
-int ft_check_stop(t_data *data)
+int	ft_check_stop(t_data *data)
 {
-    int stop;
-    
-    stop = 0;
-    pthread_mutex_lock(&data->stop_mutex);
-    if (data->stop)
-    {
-        stop = 1;
-    }
-    pthread_mutex_unlock(&data->stop_mutex);
-    return (stop);
+	int	stop;
+
+	stop = 0;
+	pthread_mutex_lock(&data->stop_mutex);
+	if (data->stop)
+	{
+		stop = 1;
+	}
+	pthread_mutex_unlock(&data->stop_mutex);
+	return (stop);
 }
 
 void	ft_log(t_philo *philo, int status)
@@ -37,15 +37,19 @@ void	ft_log(t_philo *philo, int status)
 		return ;
 	}
 	if (status == STATE_TAKE_FORK)
-		printf("%ld %d has a take fork\n", get_time() - philo->data->start_time, philo->id);
+		printf("%ld %d has a take fork\n", get_time() - philo->data->start_time,
+			philo->id);
 	else if (status == STATE_EATING)
-		printf("%ld %d  is eating\n", get_time() - philo->data->start_time, philo->id);
+		printf("%ld %d  is eating\n", get_time() - philo->data->start_time,
+			philo->id);
 	else if (status == STATE_SLEEPING)
-		printf("%ld %d   is sleeping\n", get_time() - philo->data->start_time, philo->id);
+		printf("%ld %d   is sleeping\n", get_time() - philo->data->start_time,
+			philo->id);
 	else if (status == STATE_THINKING)
-		printf("%ld %d   is thinking\n", get_time() - philo->data->start_time, philo->id);
+		printf("%ld %d   is thinking\n", get_time() - philo->data->start_time,
+			philo->id);
 	else if (status == STATE_DEAD)
-		printf("%ld %d   is died\n", get_time() - philo->data->start_time, philo->id);
+		printf("%ld %d   is died\n", get_time() - philo->data->start_time,
+			philo->id);
 	pthread_mutex_unlock(&philo->data->print_mutex);
-
 }
