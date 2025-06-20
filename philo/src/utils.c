@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 16:06:03 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/16 14:27:54 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/20 08:01:48 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ void	ft_log(t_philo *philo, int status)
 		printf("%ld %d has a take fork\n", get_time() - philo->data->start_time,
 			philo->id);
 	else if (status == STATE_EATING)
-		printf("%ld %d  is eating\n", get_time() - philo->data->start_time,
+		printf("%ld %d is eating\n", get_time() - philo->data->start_time,
 			philo->id);
 	else if (status == STATE_SLEEPING)
-		printf("%ld %d   is sleeping\n", get_time() - philo->data->start_time,
+		printf("%ld %d is sleeping\n", get_time() - philo->data->start_time,
 			philo->id);
 	else if (status == STATE_THINKING)
-		printf("%ld %d   is thinking\n", get_time() - philo->data->start_time,
+		printf("%ld %d is thinking\n", get_time() - philo->data->start_time,
 			philo->id);
 	else if (status == STATE_DEAD)
-		printf("%ld %d   is died\n", get_time() - philo->data->start_time,
+		printf("%ld %d is died\n", get_time() - philo->data->start_time,
 			philo->id);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
