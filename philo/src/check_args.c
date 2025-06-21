@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:35 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/19 15:48:57 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/21 14:29:11 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_valid_arguments(char *nptr)
 	if (!*nptr)
 		return (VALID);
 	else
-		return (VALID);
+		return (INVALID);
 }
 
 int	check_number_of_philo(char *arg1)

@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:24 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/19 15:30:41 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/21 09:44:09 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,5 @@ void	create_threads(t_data *data)
 		pthread_join(data->philos[i].thread, NULL);
 		i++;
 	}
-	if (data->n_t_must_eat == 0)
-		printf("all philo has taking there meals\n");
 	pthread_join(data->watcher, NULL);
 }

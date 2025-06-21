@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:43 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/19 15:37:16 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/21 14:58:38 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,13 @@ void	sleeping(t_philo *philo)
 
 void	thinking(t_philo *philo)
 {
+	time_t	smart_think;
+
+	pthread_mutex_lock(&philo->data->meal_mutex);
+	smart_think = (get_time() - philo->last_meal) * 0.8;
+	pthread_mutex_unlock(&philo->data->meal_mutex);
+	if (smart_think <= 0)
+		smart_think = 0;
 	ft_log(philo, STATE_THINKING);
+	ft_usleep(smart_think, philo->data);
 }
