@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:24 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/21 09:44:09 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/21 15:33:48 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	*life_cycel(void *arg)
 			break ;
 		sleeping(philo);
 		thinking(philo);
+		// usleep(500);
 	}
 	return (NULL);
 }
