@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:43 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/22 17:07:18 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/22 18:54:43 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	take_forks(t_philo *philo)
 	if (philo->data->n_philo < 2)
 	{
 		ft_log(philo, STATE_TAKE_FORK);
+		pthread_mutex_lock(philo->left_fork);
+		pthread_mutex_unlock(philo->left_fork);
 		ft_usleep(philo->data->t_to_die, philo->data);
 		return (0);
 	}
@@ -74,6 +76,6 @@ void	thinking(t_philo *philo)
 		smart_think = (philo->data->t_to_eat * 2) - philo->data->t_to_sleep;
 		if (smart_think <= 0)
 			smart_think = 0;
-		usleep(smart_think * 1000);
+		ft_usleep(smart_think, philo->data);
 	}
 }

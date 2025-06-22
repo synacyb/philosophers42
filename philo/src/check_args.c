@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:35 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/21 14:29:11 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/22 18:37:20 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,24 @@ int	ft_valid_arguments(char *nptr)
 		return (INVALID);
 }
 
-int	check_number_of_philo(char *arg1)
+int	check_number_of_philo(char **args)
 {
 	int	n_philo;
+	int	t_to_d;
+	int	t_to_et;
+	int	t_to_slep;
 
-	n_philo = ft_atoi(arg1);
-	if (n_philo <= 0)
+	n_philo = ft_atoi(args[1]);
+	if (n_philo == 0)
+		return (INVALID);
+	t_to_d = ft_atoi(args[2]);
+	if (t_to_d == 0)
+		return (INVALID);
+	t_to_et = ft_atoi(args[3]);
+	if (t_to_et == 0)
+		return (INVALID);
+	t_to_slep = ft_atoi(args[4]);
+	if (t_to_slep == 0)
 		return (INVALID);
 	return (VALID);
 }
@@ -55,7 +67,7 @@ int	check_args(char **args)
 			return (INVALID);
 		i++;
 	}
-	if (check_number_of_philo(args[1]) == INVALID)
+	if (check_number_of_philo(args) == INVALID)
 		return (INVALID);
 	return (VALID);
 }
