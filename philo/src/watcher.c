@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 15:45:59 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/21 15:34:37 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/22 12:19:54 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	*ft_watcher(void *arg)
 		}
 		if (ft_check_died(data))
 			break ;
-		usleep(1000);
+		usleep(500);
 	}
 	return (NULL);
 }
