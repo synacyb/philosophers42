@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:43 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/22 13:50:36 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/22 17:07:18 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	take_forks(t_philo *philo)
 	}
 	else
 	{
+		usleep(500);
 		pthread_mutex_lock(philo->right_fork);
 		ft_log(philo, STATE_TAKE_FORK);
 		pthread_mutex_lock(philo->left_fork);

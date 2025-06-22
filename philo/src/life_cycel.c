@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:24 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/22 13:42:14 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/22 17:23:18 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,12 @@ int	check_etaing(t_philo *philo)
 	return (0);
 }
 
-int	check_and_set_flag(t_philo *philo)
-{
-	if (philo->data->n_t_must_eat == 0)
-		return (1);
-	if (philo->id == 1)
-		usleep(100);
-	return (0);
-}
-
 void	*life_cycel(void *arg)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	if (check_and_set_flag(philo))
+	if (philo->data->n_t_must_eat == 0)
 		return (NULL);
 	while (!ft_check_stop(philo->data) && check_etaing(philo) == 1)
 	{

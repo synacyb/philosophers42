@@ -6,7 +6,7 @@
 /*   By: ayadouay <ayadouay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:08:31 by ayadouay          #+#    #+#             */
-/*   Updated: 2025/06/22 12:26:21 by ayadouay         ###   ########.fr       */
+/*   Updated: 2025/06/22 17:21:27 by ayadouay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_usleep(time_t time, t_data *data)
 	time_t	start;
 
 	start = get_time();
-	while (!ft_check_stop(data) && (get_time() - start) <= time)
+	while (!ft_check_stop(data) && (get_time() - start) < time)
 	{
 		if (ft_check_stop(data))
 			break ;
